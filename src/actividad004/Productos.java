@@ -73,7 +73,10 @@ public class Productos {
     public int getCantidad(int p) {
         return cantidad[p];
     }
-
+    public int getTam(){
+        return cantidad.length;
+    }
+    
     //Método que devuelve el mayor precio. 
     public float mayorPrecio() {
         float mayor = getPrecioProducto(0);

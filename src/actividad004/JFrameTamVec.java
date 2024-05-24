@@ -5,20 +5,30 @@ package actividad004;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 /**
  *
  * @author equipo
  */
 public class JFrameTamVec extends javax.swing.JFrame {
-    Productos LosProductos;
+    JFramePrincipal JFP;
+    JTable tabla;
+    
+    
 
     /**
      * Creates new form JFramePrincipal
      */
+    public  JFrameTamVec( JFramePrincipal jp, JTable auxT) {
+        initComponents();
+        JFP=jp;
+        tabla=auxT;
+    }
     public JFrameTamVec() {
         initComponents();
-        LosProductos=null;
+       
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,21 +127,20 @@ public class JFrameTamVec extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JFrameCapDat JS;
-        LosProductos = new Productos(jt1);
-        if (LosProductos != null) {
-            JS = new JFrameCapDat(LosProductos);
-            JS.setVisible(true);
-            dispose();
-        }
+        JFP.LosProductos = new Productos(jt1);         
+        JFrameCapDat jcap = new JFrameCapDat(
+               JFP, tabla);
+        jcap.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt1ActionPerformed

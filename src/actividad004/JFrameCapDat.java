@@ -11,8 +11,8 @@ import javax.swing.JTable;
  * @author equipo
  */
 public class JFrameCapDat extends javax.swing.JFrame {
- JFramePrincipal Jfppal;
- JTable JTable1;
+ JFramePrincipal JFP;
+ JTable tabla;
   int indice;
     /**
      * Creates new form JFrameSecundario
@@ -21,10 +21,11 @@ public class JFrameCapDat extends javax.swing.JFrame {
         initComponents();
         
     }
-    public JFrameCapDat(JFrameTamVec JP,JTable auxT) {
+    public JFrameCapDat(JFramePrincipal JP,JTable auxT) {
         initComponents();
-        Jfppal = JP;
+        JFP = JP;
         indice=0;
+        jb4.setEnabled(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,12 +117,12 @@ public class JFrameCapDat extends javax.swing.JFrame {
                             .addComponent(jl2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(99, 99, 99)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap())
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                                    .addComponent(jtNombre)
+                                    .addComponent(jtPrecio)
+                                    .addComponent(jtCantidad))))
+                        .addContainerGap(40, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jb3)
@@ -188,6 +189,7 @@ public class JFrameCapDat extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
@@ -204,10 +206,10 @@ public class JFrameCapDat extends javax.swing.JFrame {
 
     private void jb3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb3ActionPerformed
      boolean cap = false;
-        cap =Jfppal.LosProductos.setAddInfo(jtCodigo,jtNombre,jtPrecio, jtCantidad,indice);
+        cap = JFP.LosProductos.setAddInfo(jtCodigo, jtNombre,jtPrecio,jtCantidad,indice);
         if (cap != false) {
             indice++;
-            if (indice < LosProductos.length) {
+            if (indice< JFP.LosProductos.getTam()) {
                 jl7.setText("Registro de datos "
                         + "del producto en la posición " + indice+ ":");
             } else {
@@ -216,15 +218,15 @@ public class JFrameCapDat extends javax.swing.JFrame {
                 jtCodigo.setEditable(false);
                 jtNombre.setEditable(false);
                 jtPrecio.setEditable(false);
-                jtCantidad.setEditable(false);  
+                jtCantidad.setEditable(false);
                 jb3.setEnabled(false);
                 jtCodigo.setText("");
                 jtNombre.setText("");
-                jtCantidad.setText("");
                 jtPrecio.setText("");
-                jb3.setEnabled(true);
+                jtCantidad.setText("");
+                jb4.setEnabled(true);
             }
-            JP.misProductos.setLlenarJTable(JTable1);
+            JFP.LosProductos.setLlenarJTable(tabla);
         }
         
     }//GEN-LAST:event_jb3ActionPerformed
