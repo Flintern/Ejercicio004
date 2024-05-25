@@ -1,5 +1,7 @@
 package actividad004;
+
 import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,16 +12,17 @@ import javax.swing.JOptionPane;
  * @author equipo
  */
 public class JFramePrincipal extends javax.swing.JFrame {
-  public Productos LosProductos=null;
+
+    public Productos LosProductos = null;
+
     /**
      * Creates new form JTable
      */
-   
-     public JFramePrincipal() {
+
+    public JFramePrincipal() {
         initComponents();
-        
+
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -175,54 +178,60 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenu2MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu2MenuSelected
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jMenu2MenuSelected
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-         System.exit(0);
-        
+        System.exit(0);
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-       JFrameTamVec jfv= new JFrameTamVec(this, tabla);
+        JFrameTamVec jfv = new JFrameTamVec(this, tabla);
         jfv.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null,"Los productos que superan el precio de 2500 y tienen menos de 5 "
-                + "en existencia son: "+ LosProductos.generarInforme());
+        JOptionPane.showMessageDialog(null, "Los productos que superan el precio de 2500 y tienen menos de 5 "
+                + "en existencia son: " + "\n" + LosProductos.generarInforme());
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-         JOptionPane.showMessageDialog(null,"El total de ventas es: "+ LosProductos.total());
-        
+        JOptionPane.showMessageDialog(null, "El total de ventas es: " + LosProductos.total());
+
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
-        int eve=Integer.parseInt(JOptionPane.showInputDialog(
+        int eve = Integer.parseInt(JOptionPane.showInputDialog(
                 "Entre el código del producto a buscar: "));
-     LosProductos.getMostrarInfo(LosProductos.getBuscarCodigo(eve));
+
+        int jes = LosProductos.getBuscarCodigo(eve);
+
+        if (jes == -1) {
+            JOptionPane.showMessageDialog(null, "El producto no existe");
+        } else
+            LosProductos.getMostrarInfo(jes);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null,"El producto de mayor precio es de: "+ LosProductos.mayorPrecio());
-        
+        JOptionPane.showMessageDialog(null, "El producto de mayor precio es de: " + LosProductos.mayorPrecio());
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

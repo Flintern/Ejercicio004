@@ -6,29 +6,29 @@ package actividad004;
  */
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+
 /**
  *
  * @author equipo
  */
 public class JFrameTamVec extends javax.swing.JFrame {
+
     JFramePrincipal JFP;
     JTable tabla;
-    
-    
 
     /**
      * Creates new form JFramePrincipal
      */
-    public  JFrameTamVec( JFramePrincipal jp, JTable auxT) {
+    public JFrameTamVec(JFramePrincipal jp, JTable auxT) {
         initComponents();
-        JFP=jp;
-        tabla=auxT;
+        JFP = jp;
+        tabla = auxT;
     }
+
     public JFrameTamVec() {
         initComponents();
-       
+
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -132,9 +132,9 @@ public class JFrameTamVec extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JFP.LosProductos = new Productos(jt1);         
+        JFP.LosProductos = new Productos(jt1);
         JFrameCapDat jcap = new JFrameCapDat(
-               JFP, tabla);
+                JFP, tabla);
         jcap.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -144,19 +144,19 @@ public class JFrameTamVec extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt1ActionPerformed
-        
-        
+
+
     }//GEN-LAST:event_jt1ActionPerformed
 
     private void jt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt1KeyTyped
-       int key=evt.getKeyChar();
-       boolean numeros=key>48&& key<=57;
-       if(!numeros){
-           JOptionPane.showMessageDialog( null,"Error: el dato ingresado debe ser numerico!!" + 
-                   "Intente nuevamente");
-           evt.consume();
-           
-       }
+        int key = evt.getKeyChar();
+        boolean numeros = key > 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(null, "Error: el dato ingresado debe ser numerico!!"
+                    + "Intente nuevamente");
+            evt.consume();
+
+        }
     }//GEN-LAST:event_jt1KeyTyped
 
     /**

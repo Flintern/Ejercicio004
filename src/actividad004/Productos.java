@@ -73,10 +73,11 @@ public class Productos {
     public int getCantidad(int p) {
         return cantidad[p];
     }
-    public int getTam(){
+
+    public int getTam() {
         return cantidad.length;
     }
-    
+
     //Método que devuelve el mayor precio. 
     public float mayorPrecio() {
         float mayor = getPrecioProducto(0);
@@ -136,33 +137,27 @@ public class Productos {
         return sumaTotal;
     }
 
-    public boolean setAddInfo(
-            JTextField jtfCodigo,
-            JTextField jtfNomb,
-            JTextField jtfPrecio,
-            JTextField jtfCantidad,
-            int indice
-    ) {
+    public boolean setAddInfo(JTextField jtCodigo, JTextField jtNombre, JTextField jtPrecio, JTextField jtCantidad, int indice) {
         try {
-            if (getBuscarCodigo(Integer.parseInt(jtfCodigo.getText())) != -1) {
+            if (getBuscarCodigo(Integer.parseInt(jtCodigo.getText())) != -1) {
                 JOptionPane.showMessageDialog(null,
                         "El codigo del producto ya se encuentra "
                         + "registrado!  Intente nuevamente.");
-                jtfCodigo.setText("");
-                jtfNomb.requestFocus();
+                jtCodigo.setText("");
+                jtNombre.requestFocus();
                 return false;
             } else {
-                codigoProducto[indice] = Integer.parseInt(jtfCodigo.getText());
-                nombreProducto[indice] = jtfNomb.getText();
-                precioProducto[indice] = Float.parseFloat(jtfPrecio.getText());
-                cantidad[indice] = Integer.parseInt(jtfCantidad.getText());
+                codigoProducto[indice] = Integer.parseInt(jtCodigo.getText());
+                nombreProducto[indice] = jtNombre.getText();
+                precioProducto[indice] = Float.parseFloat(jtPrecio.getText());
+                cantidad[indice] = Integer.parseInt(jtCantidad.getText());
 
-                jtfCodigo.setText("");
-                jtfNomb.setText("");
-                jtfPrecio.setText("");
-                jtfCantidad.setText("");
+                jtCodigo.setText("");
+                jtNombre.setText("");
+                jtPrecio.setText("");
+                jtCantidad.setText("");
 
-                jtfCodigo.requestFocus();
+                jtCodigo.requestFocus();
                 return true;
             }
         } catch (Exception e) {
@@ -172,8 +167,7 @@ public class Productos {
         }
     }
 
-    public void setRegistrarFilaJTable(DefaultTableModel miModelo,
-            int Fila, int indiceArray) {
+    public void setRegistrarFilaJTable(DefaultTableModel miModelo, int Fila, int indiceArray) {
 
         miModelo.setValueAt(codigoProducto[indiceArray], Fila, 0);
         miModelo.setValueAt(nombreProducto[indiceArray], Fila, 1);
@@ -181,7 +175,7 @@ public class Productos {
         miModelo.setValueAt(cantidad[indiceArray], Fila, 3);
     }
 
-    public void setLlenarJTable(JTable tab) {
+    public void setLlenarJTable(JTable tabla) {
         int indice = 0; //Este índice recorre los elementos del ArrayList
         int i = 0;  //Este índice para ubicar posición de fila en el JTable
         DefaultTableModel miModelo = new DefaultTableModel();
@@ -195,7 +189,7 @@ public class Productos {
             i++;
             indice++;
         }
-        tab.setModel(miModelo);
+        tabla.setModel(miModelo);
     }
 
     public void getMostrarInfo(int pos) {

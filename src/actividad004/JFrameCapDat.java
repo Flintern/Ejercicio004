@@ -1,6 +1,7 @@
 package actividad004;
 
 import javax.swing.JTable;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -11,22 +12,28 @@ import javax.swing.JTable;
  * @author equipo
  */
 public class JFrameCapDat extends javax.swing.JFrame {
- JFramePrincipal JFP;
- JTable tabla;
-  int indice;
+
+    JFramePrincipal JFP;
+    JTable tabla;
+    int indice;
+
     /**
      * Creates new form JFrameSecundario
      */
+    public JFrameCapDat(JFramePrincipal jp, JTable auxT) {
+        initComponents();
+        jb4.setEnabled(false);
+        JFP = jp;
+        tabla = auxT;
+        indice = 0;
+
+    }
+
     public JFrameCapDat() {
         initComponents();
-        
+
     }
-    public JFrameCapDat(JFramePrincipal JP,JTable auxT) {
-        initComponents();
-        JFP = JP;
-        indice=0;
-        jb4.setEnabled(false);
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,9 +132,10 @@ public class JFrameCapDat extends javax.swing.JFrame {
                         .addContainerGap(40, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jb4)
+                        .addGap(38, 38, 38)
                         .addComponent(jb3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jb4))))
+                        .addGap(67, 67, 67))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,11 +172,11 @@ public class JFrameCapDat extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb4)
-                    .addComponent(jb3))
-                .addContainerGap())
+                    .addComponent(jb3)
+                    .addComponent(jb4))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,13 +213,13 @@ public class JFrameCapDat extends javax.swing.JFrame {
     }//GEN-LAST:event_jtCantidadActionPerformed
 
     private void jb3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb3ActionPerformed
-     boolean cap = false;
-        cap = JFP.LosProductos.setAddInfo(jtCodigo, jtNombre,jtPrecio,jtCantidad,indice);
+        boolean cap = false;
+        cap = JFP.LosProductos.setAddInfo(jtCodigo, jtNombre, jtPrecio, jtCantidad, indice);
         if (cap != false) {
             indice++;
-            if (indice< JFP.LosProductos.getTam()) {
+            if (indice < JFP.LosProductos.getTam()) {
                 jl7.setText("Registro de datos "
-                        + "del producto en la posición " + indice+ ":");
+                        + "del producto en la posición " + indice + ":");
             } else {
                 jl7.setText("Se han registrado todos"
                         + " los datos satisfactoriamente!");
@@ -228,11 +236,11 @@ public class JFrameCapDat extends javax.swing.JFrame {
             }
             JFP.LosProductos.setLlenarJTable(tabla);
         }
-        
+
     }//GEN-LAST:event_jb3ActionPerformed
 
     private void jb4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb4ActionPerformed
-      System.exit(0);
+        dispose();
     }//GEN-LAST:event_jb4ActionPerformed
 
     private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
